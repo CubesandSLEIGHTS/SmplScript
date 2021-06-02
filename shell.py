@@ -1,8 +1,9 @@
-import SmplScript as smpl
+import SmplScript.SmplScript as smpl
+from termcolor import cprint as c
 
 while True:
-    text = input('Smpl > ')
-    result, error = smpl.run(text)
+	text = input('Smpl > ')
+	result, error = smpl.run('<stdin>', text)
 
-    if error: print(error.as_string())
-    else: print(result)
+	if error: c(error.as_string(), 'red')
+	else: print(result)
