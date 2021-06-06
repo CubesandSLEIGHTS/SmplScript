@@ -6,4 +6,4 @@ while True:
 	result, error = smpl.run('<stdin>', text)
 
 	if error: c(error.as_string(), 'red')
-	else: print(result)
+	else: print(repr(result))
