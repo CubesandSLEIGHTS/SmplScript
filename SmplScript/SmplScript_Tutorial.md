@@ -30,7 +30,7 @@ assign x = "hello there"
 
 #### How do I make a function?
 
-To make a function, you have to use the ```define-func``` keyword then the arrow (```->```). Here is an example:
+To make a function, you have to use the ```define-func``` keyword then the arrow (```->```) for a single line function. Here is an example:
 
 ```
 define-func hello_there() -> print("Hello there")

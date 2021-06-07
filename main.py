@@ -1,1 +1,1 @@
-import SmplScript.shell
+import SmplScript
