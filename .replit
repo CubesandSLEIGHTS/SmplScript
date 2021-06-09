@@ -1,0 +1,2 @@
+language="python"
+run="clear && python3 SmplScript/run.py"

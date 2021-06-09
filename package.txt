@@ -1,0 +1,6 @@
+cd SmplScript_master
+
+python3 setup.py sdist bdist_wheel
+pip install twine
+twine check dist/*
+twine upload dist/*
