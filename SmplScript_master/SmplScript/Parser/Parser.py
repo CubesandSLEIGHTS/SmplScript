@@ -1,6 +1,6 @@
-from SmplScript_master.SmplScript.Errors.Error import *
-from SmplScript_master.SmplScript.Nodes.nodes import *
-from SmplScript_master.SmplScript.Constants.constants import TT_INT, TT_FLOAT, TT_STRING, TT_IDENTIFIER, TT_KEYWORD, TT_PLUS, TT_MINUS, TT_MUL, TT_DIV, TT_POW, TT_EQ, TT_LPAREN, TT_RPAREN, TT_LSQUARE, TT_RSQUARE, TT_EE, TT_NE, TT_GT, TT_LT, TT_LTE, TT_GTE, TT_COMMA, TT_ARROW, TT_NEWLINE, TT_EOF 
+from Errors.Error import *
+from Nodes.nodes import *
+from Constants.constants import TT_INT, TT_FLOAT, TT_STRING, TT_IDENTIFIER, TT_KEYWORD, TT_PLUS, TT_MINUS, TT_MUL, TT_DIV, TT_POW, TT_EQ, TT_LPAREN, TT_RPAREN, TT_LSQUARE, TT_RSQUARE, TT_EE, TT_NE, TT_GT, TT_LT, TT_LTE, TT_GTE, TT_COMMA, TT_ARROW, TT_NEWLINE, TT_EOF 
 
 #######################################
 # PARSE RESULT

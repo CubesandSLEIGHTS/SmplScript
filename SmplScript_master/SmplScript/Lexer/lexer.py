@@ -1,7 +1,7 @@
-from SmplScript_master.SmplScript.Position.pos import Position
-from SmplScript_master.SmplScript.Constants.constants import *
-from SmplScript_master.SmplScript.Token.Token import Token
-from SmplScript_master.SmplScript.Errors.Error import ExpectedCharError, IllegalCharError
+from Position.pos import Position
+from Constants.constants import *
+from Token.Token import Token
+from Errors.Error import ExpectedCharError, IllegalCharError
 
 #######################################
 # LEXER

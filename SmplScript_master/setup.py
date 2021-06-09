@@ -7,7 +7,7 @@ def readme():
 
 setup(
     name='SmplScript',
-    version='0.1.2',
+    version='0.1.3',
     description='A language written from python, meant for beginners',
     long_description=readme(),
     long_description_content_type='text/markdown',

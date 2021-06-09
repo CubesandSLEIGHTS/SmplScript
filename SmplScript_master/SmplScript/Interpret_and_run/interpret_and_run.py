@@ -1,12 +1,12 @@
-from SmplScript_master.SmplScript.Runtime_Result.RTResult import RTResult
-from SmplScript_master.SmplScript.Values.values import Value, Number, String, List
-from SmplScript_master.SmplScript.Context.context import Context
-from SmplScript_master.SmplScript.Symbol_Table.symbol_table import SymbolTable
-from SmplScript_master.SmplScript.Errors.Error import RTError
-from SmplScript_master.SmplScript.Lexer.lexer import Lexer
-from SmplScript_master.SmplScript.Parser.Parser import Parser
-from SmplScript_master.SmplScript.Constants.constants import *
-import os
+from Runtime_Result.RTResult import RTResult
+from Values.values import Value, Number, String, List
+from Context.context import Context
+from Symbol_Table.symbol_table import SymbolTable
+from Errors.Error import RTError
+from Lexer.lexer import Lexer
+from Parser.Parser import Parser
+from Constants.constants import *
+from Interpret_and_run.cs import cs
 
 class BaseFunction(Value):
   def __init__(self, name):
@@ -126,14 +126,12 @@ class BuiltInFunction(BaseFunction):
         print(f"'{text}' must be an integer. Try again!")
     return RTResult().success(Number(number))
   execute_input_int.arg_names = []
-  def execute_clear(self, exec_ctx):
-    os.system('cls' if os.name == 'nt' else 'cls') 
-    return RTResult().success(Number.null)
-  execute_clear.arg_names = []
+
   def execute_is_number(self, exec_ctx):
     is_number = isinstance(exec_ctx.symbol_table.get("value"), Number)
     return RTResult().success(Number.true if is_number else Number.false)
   execute_is_number.arg_names = ["value"]
+
   def execute_is_string(self, exec_ctx):
     is_number = isinstance(exec_ctx.symbol_table.get("value"), String)
     return RTResult().success(Number.true if is_number else Number.false)
@@ -146,6 +144,7 @@ class BuiltInFunction(BaseFunction):
     is_number = isinstance(exec_ctx.symbol_table.get("value"), BaseFunction)
     return RTResult().success(Number.true if is_number else Number.false)
   execute_is_function.arg_names = ["value"]
+
   def execute_append(self, exec_ctx):
     list_ = exec_ctx.symbol_table.get("list")
     value = exec_ctx.symbol_table.get("value")
@@ -158,6 +157,7 @@ class BuiltInFunction(BaseFunction):
     list_.elements.append(value)
     return RTResult().success(Number.null)
   execute_append.arg_names = ["list", "value"]
+
   def execute_pop(self, exec_ctx):
     list_ = exec_ctx.symbol_table.get("list")
     index = exec_ctx.symbol_table.get("index")
@@ -240,12 +240,13 @@ class BuiltInFunction(BaseFunction):
       ))
     return RTResult().success(Number.null)
   execute_run.arg_names = ["fn"]
+
 BuiltInFunction.print       = BuiltInFunction("print")
 #BuiltInFunction.cprint			= BuiltInFunction("cprint")
 BuiltInFunction.print_ret   = BuiltInFunction("print_ret")
 BuiltInFunction.input       = BuiltInFunction("input")
 BuiltInFunction.input_int   = BuiltInFunction("input_int")
-BuiltInFunction.clear       = BuiltInFunction("clear")
+BuiltInFunction.clear       = cs()
 BuiltInFunction.is_number   = BuiltInFunction("is_number")
 BuiltInFunction.is_string   = BuiltInFunction("is_string")
 BuiltInFunction.is_list     = BuiltInFunction("is_list")
@@ -518,8 +519,8 @@ global_symbol_table.set("print", BuiltInFunction.print)
 global_symbol_table.set("print_ret", BuiltInFunction.print_ret)
 global_symbol_table.set("input", BuiltInFunction.input)
 global_symbol_table.set("int_input", BuiltInFunction.input_int)
-global_symbol_table.set("cleat", BuiltInFunction.clear)
-global_symbol_table.set("cls", BuiltInFunction.clear)
+global_symbol_table.set("clear", cs())
+global_symbol_table.set("cls", cs())
 global_symbol_table.set("is_num", BuiltInFunction.is_number)
 global_symbol_table.set("is_str", BuiltInFunction.is_string)
 global_symbol_table.set("is_list", BuiltInFunction.is_list)
@@ -535,6 +536,9 @@ def run(fn, text):
   lexer = Lexer(fn, text)
   tokens, error = lexer.make_tokens()
   if error: return None, error
+  if text == 'cls' or text == 'clear': 
+    cs()
+    return
   
   # Generate AST
   parser = Parser(tokens)

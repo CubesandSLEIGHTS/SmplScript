@@ -19,4 +19,4 @@ SmplScript is a very easy to use language. The syntax is based out of English.
 ---
 ### How do I use the language?
 
-Go to [HERE](https://github.com/CubesandSLEIGHTS/SmplScript/blob/master/SmplScript/SmplScript_Tutorial.md "SmplScript Tutorial") for a tutorial.
+Go to [HERE](https://github.com/CubesandSLEIGHTS/SmplScript/blob/master/SmplScript_master/SmplScript/SmplScript_Tutorial.md "SmplScript Tutorial") for a tutorial.

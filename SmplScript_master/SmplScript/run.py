@@ -1,11 +1,14 @@
-from SmplScript_master.SmplScript.Interpret_and_run.interpret_and_run import run
+from Interpret_and_run.interpret_and_run import run
 from termcolor import cprint as c
 
 def run_language():
 	while True:
 		text = input('Smpl > ')
 		if text.strip() == "": continue
-		result, error = run('<stdin>', text)
+		try:
+			result, error = run('<stdin>', text)
+		except:
+			continue
 
 		if error:
 			c(error.as_string(), 'red')

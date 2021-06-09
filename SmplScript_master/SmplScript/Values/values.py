@@ -1,5 +1,5 @@
-from SmplScript_master.SmplScript.Runtime_Result.RTResult import RTResult
-from SmplScript_master.SmplScript.Errors.Error import RTError
+from Runtime_Result.RTResult import RTResult
+from Errors.Error import RTError
 import math
 
 class Value:
